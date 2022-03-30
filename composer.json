@@ -1,0 +1,17 @@
+{
+    "name": "test/linter",
+    "description": "Setup for testing linter",
+    "require": {
+        "phpseclib/phpseclib": "~2.0"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.6",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+        "phpstan/phpstan": "^0.12.89"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}
