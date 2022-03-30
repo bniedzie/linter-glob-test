@@ -1,0 +1,28 @@
+name: Lint
+
+on:
+  pull_request:
+    paths:
+      - "**.php"
+      - "phpcs.xml"
+      - ".github/workflows/lint.yml"
+
+jobs:
+  phpcs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # important!
+
+      - name: Run composer install
+        uses: baschny/php-composer-action@v1
+        with:
+          command: install
+          args: --ignore-platform-reqs # Needed for phpspreadsheet to succeed.
+
+      - uses: thenabeel/action-phpcs@v8
+        with:
+          files: "**.php" # you may customize glob as needed
+          phpcs_path: vendor/bin/phpcs
+          standard: phpcs.xml
