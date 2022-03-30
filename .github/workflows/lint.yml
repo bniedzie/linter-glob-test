@@ -21,8 +21,8 @@ jobs:
           command: install
           args: --ignore-platform-reqs # Needed for phpspreadsheet to succeed.
 
-      - uses: thenabeel/action-phpcs@v8
+      - uses: bniedzie/action-phpcs@master
         with:
-          files: "!(**/third-party-plugin/**/*.php),!(**/subfolder-1/**/*.php)" # you may customize glob as needed
+          files: "!/subfolder/{third-party-plugin,subfolder-1}/**/*.php" # you may customize glob as needed
           phpcs_path: vendor/bin/phpcs
           standard: phpcs.xml
