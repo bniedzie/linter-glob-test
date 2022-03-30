@@ -3,9 +3,9 @@ name: Lint
 on:
   pull_request:
     paths:
-      - "**.php"
       - "phpcs.xml"
       - ".github/workflows/lint.yml"
+      - "**.php"
 
 jobs:
   phpcs:
@@ -23,6 +23,6 @@ jobs:
 
       - uses: thenabeel/action-phpcs@v8
         with:
-          files: "**.php" # you may customize glob as needed
+          files: "/subfolder/{!third-party,!subfolder-1}/**/*.php" # you may customize glob as needed
           phpcs_path: vendor/bin/phpcs
           standard: phpcs.xml
